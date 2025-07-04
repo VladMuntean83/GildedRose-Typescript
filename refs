@@ -1,0 +1,17 @@
+After update:
+Item { name: 'book', sellIn: 2, quality: 4 }
+Item { name: 'Aged Brie', sellIn: 9, quality: 50 }
+Item { name: 'expired milk', sellIn: -1, quality: 0 }
+Item { name: 'bad candy', sellIn: -1, quality: 0 }
+Item {
+  name: 'Backstage passes to a TAFKAL80ETC concert',
+  sellIn: 1,
+  quality: 12
+}
+Item { name: 'Sulfuras, Hand of Ragnaros', sellIn: 10, quality: 80 }
+Item {
+  name: 'Backstage passes to a TAFKAL80ETC concert',
+  sellIn: 7,
+  quality: 11
+}
+Done!
