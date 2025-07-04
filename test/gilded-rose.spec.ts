@@ -55,7 +55,7 @@ describe('Brie never above 50', function () {
     });
 });
 
-describe('Brie double quality', function () {
+describe('Brie double quality, sellIn negative', function () {
 
     it('should increase by 2 when sellIn negative', function() {
         const gildedRose = new GildedRose([ new Item('Aged Brie', 0, 0) ]);
@@ -91,7 +91,7 @@ describe('Backstage increases quality 5 days', function () {
     });
 });
 
-describe('Backstage quality after', function () {
+describe('Backstage quality after concert', function () {
 
     it('should drop to 0', function() {
         const gildedRose = new GildedRose([ new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20) ]);
@@ -110,7 +110,7 @@ describe('Sulfura unmodified', function () {
     });
 });
 
-describe('Conjured normal', function () {
+describe('Conjured standard', function () {
 
     it('quality decreases by 2', function() {
         const gildedRose = new GildedRose([ new Item('Conjured watermelon', 10, 2) ]);
@@ -119,7 +119,7 @@ describe('Conjured normal', function () {
     });
 });
 
-describe('Conjured special', function () {
+describe('Conjured Brie/Backstage pass', function () {
 
     it('quality decreases normally (Brie/Backstage pass)', function() {
         const gildedRose = new GildedRose([

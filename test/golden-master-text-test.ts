@@ -12,7 +12,7 @@ const itemArr: Item[] = [
     new Item('Backstage passes to a TAFKAL80ETC concert', 8, 9)
 ];
 
-let gildedRose: GildedRose = new GildedRose(itemArr);
+const gildedRose: GildedRose = new GildedRose(itemArr);
 
 console.log("After update:");
 

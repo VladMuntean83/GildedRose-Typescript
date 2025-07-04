@@ -17,7 +17,7 @@ export class GildedRose {
         this.items = items;
     }
 
-    private checkConjured(item: Item): string {
+    private removeConjured(item: Item): string {
 
         // Delete Conjured for normal parsing of items
         return item.name.replace('Conjured', '');
@@ -31,7 +31,8 @@ export class GildedRose {
                 continue;
 
             // Compare name to check conjuring, multiply degrade by 2 if conjured
-            const conjuredFactor: number = this.items[i].name == this.checkConjured(this.items[i]) ? 1 : 2;
+            // non-conjured items' names will not be modified by removeConjured()
+            const conjuredFactor: number = this.items[i].name == this.removeConjured(this.items[i]) ? 1 : 2;
 
             // Modify sellIn
             this.items[i].sellIn = this.items[i].sellIn - 1;
@@ -40,7 +41,7 @@ export class GildedRose {
             if(!(this.items[i].name.includes('Brie') || this.items[i].name.includes('Backstage pass'))) {
 
                 // Check if is sold in time
-                let decreaseQuality = this.items[i].sellIn < 0 ? 2 : 1;
+                const decreaseQuality = this.items[i].sellIn < 0 ? 2 : 1;
                 this.items[i].quality = Math.max(0, this.items[i].quality - decreaseQuality * conjuredFactor);
 
             } else {
