@@ -55,6 +55,15 @@ describe('Brie never above 50', function () {
     });
 });
 
+describe('Brie double quality', function () {
+
+    it('should increase by 2 when sellIn negative', function() {
+        const gildedRose = new GildedRose([ new Item('Aged Brie', 0, 0) ]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(2);
+    });
+});
+
 describe('Backstage increases quality normal', function () {
 
     it('should increase by 1', function() {
