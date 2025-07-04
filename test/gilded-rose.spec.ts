@@ -109,3 +109,35 @@ describe('Sulfura unmodified', function () {
         expect(items[0].sellIn).to.equal(10);
     });
 });
+
+describe('Conjured normal', function () {
+
+    it('quality decreases by 2', function() {
+        const gildedRose = new GildedRose([ new Item('Conjured watermelon', 10, 2) ]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(0);
+    });
+});
+
+describe('Conjured special', function () {
+
+    it('quality decreases normally (Brie/Backstage pass)', function() {
+        const gildedRose = new GildedRose([
+            new Item('Conjured Brie', 10, 2),
+            new Item('Conjured Backstage pass', 20, 2)
+        ]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(3);
+        expect(items[1].quality).to.equal(3);
+    });
+});
+
+describe('Conjured Sulfura', function () {
+
+    it('stays unmodified', function() {
+        const gildedRose = new GildedRose([ new Item('Conjured Sulfuras', 10, 80) ]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(80);
+        expect(items[0].sellIn).to.equal(10);
+    });
+});

@@ -17,12 +17,21 @@ export class GildedRose {
         this.items = items;
     }
 
+    private checkConjured(item: Item): string {
+
+        // Delete Conjured for normal parsing of items
+        return item.name.replace('Conjured', '');
+    }
+
     updateQuality() {
         for (let i = 0; i < this.items.length; i++) {
 
             // Skip for sulfuras
             if (this.items[i].name.includes('Sulfuras'))
                 continue;
+
+            // Compare name to check conjuring, multiply degrade by 2 if conjured
+            const conjuredFactor: number = this.items[i].name == this.checkConjured(this.items[i]) ? 1 : 2;
 
             // Modify sellIn
             this.items[i].sellIn = this.items[i].sellIn - 1;
@@ -32,7 +41,7 @@ export class GildedRose {
 
                 // Check if is sold in time
                 let decreaseQuality = this.items[i].sellIn < 0 ? 2 : 1;
-                this.items[i].quality = Math.max(0, this.items[i].quality - decreaseQuality);
+                this.items[i].quality = Math.max(0, this.items[i].quality - decreaseQuality * conjuredFactor);
 
             } else {
                 let addToQuality = this.items[i].sellIn < 0 ? 2 : 1;
